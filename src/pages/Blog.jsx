@@ -1,21 +1,12 @@
+import { useEffect, useState } from "react";
+
 const Blog = () => {
-  const posts = [
-    {
-      title: "My First Blog Post",
-      date: "January 1, 2023",
-      excerpt: "This is the summary of my first blog post.",
-    },
-    {
-      title: "Understanding React Hooks",
-      date: "February 15, 2023",
-      excerpt: "A deep dive into the world of React Hooks.",
-    },
-    {
-      title: "Tips for Effective Remote Work",
-      date: "March 10, 2023",
-      excerpt: "How to stay productive while working from home.",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    setPosts(storedPosts);
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -26,7 +17,7 @@ const Blog = () => {
             <div key={index} className="mb-6">
               <h2 className="text-2xl font-semibold">{post.title}</h2>
               <p className="text-sm text-muted-foreground">{post.date}</p>
-              <p className="mt-2">{post.excerpt}</p>
+              <p className="mt-2">{post.content}</p>
             </div>
           ))}
         </div>

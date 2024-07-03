@@ -8,6 +8,7 @@ import Index from "./pages/Index.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import Contact from "./pages/Contact.jsx";
+import AddPost from "./pages/AddPost.jsx";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,11 @@ export const navItems = [
     icon: <FileText className="h-4 w-4" />,
   },
   {
+    title: "Add Post",
+    to: "/add-post",
+    icon: <FileText className="h-4 w-4" />,
+  },
+  {
     title: "Contact",
     to: "/contact",
     icon: <Mail className="h-4 w-4" />,
@@ -45,6 +51,7 @@ const App = () => {
               <Route index element={<Index />} />
               <Route path="about" element={<About />} />
               <Route path="blog" element={<Blog />} />
+              <Route path="add-post" element={<AddPost />} />
               <Route path="contact" element={<Contact />} />
             </Route>
           </Routes>
